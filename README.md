@@ -10,7 +10,7 @@ Plans for the mod include:
 - A new dimension beneath the Overworld, representing the deep caverns mentioned in *At the Mountains of Madness* and *The shadow over Innsmouth*
 - A research/progression system based on translating ancient tomes written in incomprehensible languages
 - A new infectious biome based on the affliction described in *The colour out of space*
-- Multiple, unique research paths that allow the player to focus on the parts of the Lovecraftian universe they're most interested in,
+- Multiple, unique research paths that allow the player to focus on the parts of the Lovecraftian universe they're most interested in
 - And much more!
 
 ## Details
