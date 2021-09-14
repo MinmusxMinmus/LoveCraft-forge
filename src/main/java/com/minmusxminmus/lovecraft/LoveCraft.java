@@ -1,17 +1,8 @@
 package com.minmusxminmus.lovecraft;
 
-import com.minmusxminmus.lovecraft.content.block.BlockSludgyBedrock;
-import com.minmusxminmus.lovecraft.content.item.ItemOldBook;
-import com.minmusxminmus.lovecraft.content.item.ItemSludgyBedrock;
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.apache.logging.log4j.Logger;
 
 @Mod(modid = LoveCraft.MOD_ID, name = LoveCraft.NAME, version = LoveCraft.VERSION)
@@ -23,12 +14,12 @@ public class LoveCraft
 
     private static Logger logger;
 
-    @EventHandler
-    public void preInit(FMLPreInitializationEvent event)
-    {
-        logger = event.getModLog();
-    }
+    @Mod.Instance(MOD_ID)
+    public static LoveCraft INSTANCE;
 
-    @EventHandler
+    @Mod.EventHandler
+    public void preInit(FMLPreInitializationEvent event) { }
+
+    @Mod.EventHandler
     public void init(FMLInitializationEvent event) { }
 }
