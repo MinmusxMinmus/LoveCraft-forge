@@ -2,6 +2,7 @@ package com.minmusxminmus.lovecraft.content.item;
 
 import com.minmusxminmus.lovecraft.LoveCraft;
 import com.minmusxminmus.lovecraft.content.block.BlockSludgyBedrock;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -10,6 +11,10 @@ import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 
 @Mod.EventBusSubscriber(modid = LoveCraft.MOD_ID)
 public class ItemSludgyBedrock extends ItemBlock {
+
+    @ObjectHolder("lovecraft:sludgy_bedrock")
+    public static final Item sludgyBedrock = null;
+
     public ItemSludgyBedrock() {
         super(new BlockSludgyBedrock());
         setUnlocalizedName(new BlockSludgyBedrock().getUnlocalizedName());

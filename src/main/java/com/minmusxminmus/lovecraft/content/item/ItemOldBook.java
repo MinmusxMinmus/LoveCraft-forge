@@ -21,6 +21,9 @@ import java.util.Objects;
 @Mod.EventBusSubscriber(modid = LoveCraft.MOD_ID)
 public class ItemOldBook extends Item {
 
+    @ObjectHolder("lovecraft:old_book")
+    public static final Item INSTANCE = null;
+
     public ItemOldBook() {
         super();
         setCreativeTab(CreativeTabs.TRANSPORTATION);

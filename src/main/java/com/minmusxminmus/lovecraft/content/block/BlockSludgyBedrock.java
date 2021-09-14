@@ -8,9 +8,13 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 
 @Mod.EventBusSubscriber(modid = LoveCraft.MOD_ID)
 public class BlockSludgyBedrock extends Block {
+
+    @ObjectHolder("lovecraft:sludgy_bedrock")
+    public static final Block INSTANCE = null;
 
     public BlockSludgyBedrock() {
         super(Material.GROUND, MapColor.BLACK);
