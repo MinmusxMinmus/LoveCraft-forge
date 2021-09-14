@@ -24,7 +24,7 @@ public class ItemOldBook extends Item {
     public ItemOldBook() {
         super();
         setCreativeTab(CreativeTabs.TRANSPORTATION);
-        setUnlocalizedName(LoveCraft.MODID + ".old_book");
+        setUnlocalizedName(LoveCraft.MOD_ID + ".old_book");
     }
 
     @Override

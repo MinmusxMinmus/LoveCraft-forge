@@ -15,7 +15,7 @@ public class BlockSludgyBedrock extends Block {
     public BlockSludgyBedrock() {
         super(Material.GROUND, MapColor.BLACK);
         setCreativeTab(CreativeTabs.TRANSPORTATION);
-        setUnlocalizedName(LoveCraft.MODID + ".sludgy_bedrock");
+        setUnlocalizedName(LoveCraft.MOD_ID + ".sludgy_bedrock");
     }
 
     @SubscribeEvent
