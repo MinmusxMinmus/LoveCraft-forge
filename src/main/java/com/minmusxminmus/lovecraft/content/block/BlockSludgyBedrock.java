@@ -13,4 +13,9 @@ public class BlockSludgyBedrock extends Block {
         setCreativeTab(CreativeTabs.TRANSPORTATION);
         setUnlocalizedName(LoveCraft.MODID + ".sludgy_bedrock");
     }
+
+    @SubscribeEvent
+    public static void register(RegistryEvent.Register<Block> event) {
+        event.getRegistry().register(new BlockSludgyBedrock().setRegistryName(LoveCraft.MOD_ID, "sludgy_bedrock"));
+    }
 }

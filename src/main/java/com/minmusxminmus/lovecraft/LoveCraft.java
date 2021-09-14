@@ -32,19 +32,4 @@ public class LoveCraft
 
     @EventHandler
     public void init(FMLInitializationEvent event) { }
-
-    @SubscribeEvent
-    public void registerBlocks(RegistryEvent.Register<Block> event) {
-        event.getRegistry().registerAll(
-                (new BlockSludgyBedrock()).setRegistryName(new ResourceLocation(MODID, "sludgy_bedrock"))
-        );
-    }
-
-    @SubscribeEvent
-    public void registerItems(RegistryEvent.Register<Item> event) {
-        event.getRegistry().registerAll(
-                (new ItemSludgyBedrock()).setRegistryName(new ResourceLocation(MODID, "sludgy_bedrock")),
-                (new ItemOldBook()).setRegistryName(new ResourceLocation(MODID, "old_book"))
-        );
-    }
 }

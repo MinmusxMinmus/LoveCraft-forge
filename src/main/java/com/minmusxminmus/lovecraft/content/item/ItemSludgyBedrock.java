@@ -8,4 +8,9 @@ public class ItemSludgyBedrock extends ItemBlock {
         super(new BlockSludgyBedrock());
         setUnlocalizedName(new BlockSludgyBedrock().getUnlocalizedName());
     }
+
+    @SubscribeEvent
+    public static void registerItems(RegistryEvent.Register<Item> event) {
+        event.getRegistry().register(new ItemSludgyBedrock().setRegistryName(LoveCraft.MOD_ID, "sludgyBedrock"));
+    }
 }

@@ -26,4 +26,9 @@ public class ItemOldBook extends Item {
         if (server != null) server.sendMessage(new TextComponentString("You understood nothing..."));
         return EnumActionResult.SUCCESS;
     }
+
+    @SubscribeEvent
+    public static void registerItems(RegistryEvent.Register<Item> event) {
+        event.getRegistry().register(new ItemOldBook().setRegistryName(LoveCraft.MOD_ID, "old_book"));
+    }
 }
