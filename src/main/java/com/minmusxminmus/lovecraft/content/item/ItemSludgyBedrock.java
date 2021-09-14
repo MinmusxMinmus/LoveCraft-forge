@@ -1,5 +1,6 @@
 package com.minmusxminmus.lovecraft.content.item;
 
+import com.minmusxminmus.lovecraft.LoveCraft;
 import com.minmusxminmus.lovecraft.content.block.BlockSludgyBedrock;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.event.RegistryEvent;
