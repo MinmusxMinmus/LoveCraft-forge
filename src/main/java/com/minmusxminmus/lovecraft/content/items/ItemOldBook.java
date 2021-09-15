@@ -1,5 +1,6 @@
 package com.minmusxminmus.lovecraft.content.items;
 
+import com.minmusxminmus.lovecraft.content.blocks.BlockSludgyBedrock;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -11,7 +12,7 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 
-public class ItemOldBook extends LoveCraftItem implements ItemModel {
+public class ItemOldBook extends LoveCraftItem {
 
     @ObjectHolder("lovecraft:old_book")
     public static final Item INSTANCE = null;
@@ -23,6 +24,9 @@ public class ItemOldBook extends LoveCraftItem implements ItemModel {
     @Override
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         player.sendStatusMessage(new TextComponentString("You understood nothing..."), true);
+        player.sendMessage(new TextComponentString("Sludgy bedrock block: " + BlockSludgyBedrock.INSTANCE_BLOCK));
+        player.sendMessage(new TextComponentString("Sludgy bedrock item: " + BlockSludgyBedrock.INSTANCE_ITEM));
+        player.sendMessage(new TextComponentString("Old book item: " + ItemOldBook.INSTANCE));
         return EnumActionResult.SUCCESS;
     }
 }

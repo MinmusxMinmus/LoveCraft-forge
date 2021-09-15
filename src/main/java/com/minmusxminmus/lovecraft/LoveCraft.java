@@ -30,23 +30,42 @@ public class LoveCraft
     public static LoveCraft INSTANCE;
 
     @Mod.EventHandler
-    public void preInit(FMLPreInitializationEvent event) { }
+    public void preInit(FMLPreInitializationEvent event) {
+        logger = event.getModLog();
+    }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) { }
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
-        blocks.getAll().forEach(block -> event.getRegistry().register(block));
+        blocks.getAll().forEach(block -> {
+            logger.info("Registering block \"" + block.getRegistryName() + "\"");
+            event.getRegistry().register(block);
+        });
     }
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
-        items.getAll().forEach(item -> event.getRegistry().register(item));
+        items.getAll().forEach(item -> {
+            logger.info("Registering item \"" + item.getRegistryName() + "\"");
+            event.getRegistry().register(item);
+        });
+        blocks.getAllHasItem().forEach(block -> {
+            logger.info("Registering block item \"" + block.getItem().getRegistryName() + "\"");
+            event.getRegistry().register(block.getItem());
+        });
     }
 
     @SubscribeEvent
     public static void registerItemModels(ModelRegistryEvent event) {
-        items.getAllHasModel().forEach(item -> Proxies.models.register(item, 0));
+        items.getAll().forEach(item -> {
+            logger.info("Registering model for item \"" + item.getRegistryName() + "\" with metadata \"0\"");
+            Proxies.models.register(item, 0);
+        });
+        blocks.getAllHasItem().forEach(block -> {
+            logger.info("Registering model for block item \"" + block.getItem().getRegistryName() + "\" with metadata \"0\"");
+            Proxies.models.register(block.getItem(), 0);
+        });
     }
 }
