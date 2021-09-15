@@ -1,25 +1,22 @@
-package com.minmusxminmus.lovecraft.content.item;
+package com.minmusxminmus.lovecraft.content.items;
 
-import com.minmusxminmus.lovecraft.LoveCraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 
-import java.util.Objects;
+import static com.minmusxminmus.lovecraft.util.StringFormatter.registryName;
+import static com.minmusxminmus.lovecraft.util.StringFormatter.unlocalize;
 
-@Mod.EventBusSubscriber(modid = LoveCraft.MOD_ID)
-public class ItemOldBook extends Item {
+public class ItemOldBook extends Item implements ItemModel {
+
+    private static final String name = "old_book";
 
     @ObjectHolder("lovecraft:old_book")
     public static final Item INSTANCE = null;
@@ -27,18 +24,13 @@ public class ItemOldBook extends Item {
     public ItemOldBook() {
         super();
         setCreativeTab(CreativeTabs.TRANSPORTATION);
-        setUnlocalizedName(LoveCraft.MOD_ID + ".old_book");
+        setUnlocalizedName(unlocalize(name));
+        setRegistryName(registryName(name));
     }
 
     @Override
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        MinecraftServer server = player.getServer();
-        if (server != null) server.sendMessage(new TextComponentString("You understood nothing..."));
+        player.sendStatusMessage(new TextComponentString("You understood nothing..."), true);
         return EnumActionResult.SUCCESS;
-    }
-
-    @SubscribeEvent
-    public static void registerItems(RegistryEvent.Register<Item> event) {
-        event.getRegistry().register(new ItemOldBook().setRegistryName(LoveCraft.MOD_ID, "old_book"));
     }
 }

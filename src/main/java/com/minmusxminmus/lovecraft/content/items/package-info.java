@@ -1,6 +1,6 @@
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-package com.minmusxminmus.lovecraft.content.item;
+package com.minmusxminmus.lovecraft.content.items;
 
 import mcp.MethodsReturnNonnullByDefault;
 import javax.annotation.ParametersAreNonnullByDefault;
