@@ -4,7 +4,6 @@ import com.minmusxminmus.lovecraft.util.StringFormatter;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 
 public class BlockSludgyBedrock extends Block {
@@ -16,7 +15,6 @@ public class BlockSludgyBedrock extends Block {
 
     public BlockSludgyBedrock() {
         super(Material.GROUND, MapColor.BLACK);
-        setCreativeTab(CreativeTabs.TRANSPORTATION);
         setUnlocalizedName(StringFormatter.unlocalize(name));
         setRegistryName(StringFormatter.registryName(name));
     }
