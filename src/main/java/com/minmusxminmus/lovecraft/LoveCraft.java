@@ -65,7 +65,7 @@ public class LoveCraft
         });
         blocks.getAllHasItem().forEach(block -> {
             logger.info("Registering model for block item \"" + block.getItem().getRegistryName() + "\" with metadata \"0\"");
-            Proxies.models.register(block.getItem(), 0);
+            Proxies.models.register(Item.getItemFromBlock((Block) block), 0);
         });
     }
 }
