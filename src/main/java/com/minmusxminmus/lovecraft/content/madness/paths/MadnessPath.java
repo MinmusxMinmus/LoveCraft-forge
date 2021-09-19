@@ -9,6 +9,10 @@ import java.util.HashSet;
 
 public abstract class MadnessPath extends IForgeRegistryEntry.Impl<MadnessPath> {
     public static IForgeRegistry<MadnessPath> MADNESS_REGISTRY = null;
+
+    /**
+     * The path's unique identifier string. Usually follows the format "pathXXXX", with XXXX being the identifying word.
+     */
     public abstract String getIdentifier();
 
     /**
@@ -20,6 +24,9 @@ public abstract class MadnessPath extends IForgeRegistryEntry.Impl<MadnessPath> 
         return paths;
     }
 
+    /**
+     * Returns all available madness paths. If no madness path registry is found, it will instead return the default paths.
+     */
     public static Collection<MadnessPath> getAllPaths() {
         if (MADNESS_REGISTRY == null) return getDefaultPaths();
         return MADNESS_REGISTRY.getValuesCollection();
