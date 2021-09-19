@@ -1,3 +1,7 @@
-tile.lovecraft.sludgy_bedrock.name=Sludgy Bedrock Block
+# Blocks
+tile.lovecraft.sludgy_bedrock.name=Sludgy Bedrock
 item.lovecraft.sludgy_bedrock.name=Sludgy Bedrock
+
+# Items
+
 item.lovecraft.old_book.name=Old Book
