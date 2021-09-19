@@ -2,6 +2,7 @@ package com.minmusxminmus.lovecraft;
 
 import com.minmusxminmus.lovecraft.content.collections.Blocks;
 import com.minmusxminmus.lovecraft.content.collections.Items;
+import com.minmusxminmus.lovecraft.content.commands.CommandLoveCraft;
 import com.minmusxminmus.lovecraft.content.madness.paths.*;
 import com.minmusxminmus.lovecraft.proxy.Proxies;
 import net.minecraft.block.Block;
@@ -13,6 +14,7 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.RegistryBuilder;
@@ -44,6 +46,12 @@ public class LoveCraft
     public void init(FMLInitializationEvent event) {
         logger.info("Caching Madness path registry");
         MadnessPath.MADNESS_REGISTRY = GameRegistry.findRegistry(MadnessPath.class);
+    }
+
+    @Mod.EventHandler
+    public void registerCommands(FMLServerStartingEvent event) {
+        logger.info("Registering LoveCraft command");
+        event.registerServerCommand(new CommandLoveCraft());
     }
 
     @SubscribeEvent

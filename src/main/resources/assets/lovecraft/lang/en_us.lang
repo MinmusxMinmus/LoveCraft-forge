@@ -5,3 +5,7 @@ item.lovecraft.sludgy_bedrock.name=Sludgy Bedrock
 # Items
 
 item.lovecraft.old_book.name=Old Book
+
+# Commands
+
+commands.lovecraft.lovecraft.usage=/LoveCraft <nothing>
