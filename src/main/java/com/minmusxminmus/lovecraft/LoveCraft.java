@@ -121,7 +121,7 @@ public class LoveCraft
                     "It is recommended to leave this untouched, unless you're playing with an addon that adds events past the default level."
             })
             @Config.RangeDouble(min = 0.0D)
-            public static double MAX_MADNESS = 100.0D;
+            public double MAX_MADNESS = 100.0D;
 
             @Config.Name("Minimum Madness value")
             @Config.Comment({
@@ -132,35 +132,35 @@ public class LoveCraft
                     "Note: having this value above any madness event's level means that said event can and will be triggered as if the player had reached the Madness level means."
             })
             @Config.RangeDouble(min = 0.0D)
-            public static double MIN_MADNESS = 0.0D;
+            public double MIN_MADNESS = 0.0D;
 
             @Config.Name("Deep path enabled")
             @Config.Comment({
                     "This determines whether or not the Deep path is enabled.",
                     "Disabling this means the player won't be able to enter said path, potentially locking them from certain features without the use of cheats."
             })
-            public static boolean DEEP_PATH_ENABLED = true;
+            public boolean DEEP_PATH_ENABLED = true;
 
             @Config.Name("Dream path enabled")
             @Config.Comment({
                     "This determines whether or not the Dream path is enabled.",
                     "Disabling this means the player won't be able to enter said path, potentially locking them from certain features without the use of cheats."
             })
-            public static boolean DREAM_PATH_ENABLED = true;
+            public boolean DREAM_PATH_ENABLED = true;
 
             @Config.Name("Science path enabled")
             @Config.Comment({
                     "This determines whether or not the Science path is enabled.",
                     "Disabling this means the player won't be able to enter said path, potentially locking them from certain features without the use of cheats."
             })
-            public static boolean SCIENCE_PATH_ENABLED = true;
+            public boolean SCIENCE_PATH_ENABLED = true;
 
             @Config.Name("Knowledge path enabled")
             @Config.Comment({
                     "This determines whether or not the Knowledge path is enabled.",
                     "Disabling this means the player won't be able to enter said path, potentially locking them from certain features without the use of cheats."
             })
-            public static boolean KNOWLEDGE_PATH_ENABLED = true;
+            public boolean KNOWLEDGE_PATH_ENABLED = true;
         }
 
         @Config.Name("Madness configuration")

@@ -5,8 +5,7 @@ import com.minmusxminmus.lovecraft.util.events.MadnessEvents;
 
 import java.util.Observable;
 
-import static com.minmusxminmus.lovecraft.LoveCraft.Configuration.MadnessConfig.MAX_MADNESS;
-import static com.minmusxminmus.lovecraft.LoveCraft.Configuration.MadnessConfig.MIN_MADNESS;
+import static com.minmusxminmus.lovecraft.LoveCraft.Configuration.madnessConfig;
 
 public class Madness extends Observable {
 
@@ -17,7 +16,7 @@ public class Madness extends Observable {
     }
 
     public Madness() {
-        this(MIN_MADNESS);
+        this(madnessConfig.MIN_MADNESS);
     }
 
     protected double getLevel() {
@@ -33,15 +32,12 @@ public class Madness extends Observable {
         // Check correct parameter
         if (amount < 0.0D) return false;
 
-        // Check max value
-        if (NumberUtils.doubleEqual(level, MAX_MADNESS)) return false;
-
         // Check bad value
-        if (level + amount > MAX_MADNESS) return false;
+        if (level + amount > madnessConfig.MAX_MADNESS) return false;
 
         level = level + amount;
-        if (level > MAX_MADNESS) level = MAX_MADNESS;
-        if (level < MIN_MADNESS) level = MIN_MADNESS; // ??????
+        if (level > madnessConfig.MAX_MADNESS) level = madnessConfig.MAX_MADNESS;
+        if (level < madnessConfig.MIN_MADNESS) level = madnessConfig.MIN_MADNESS; // ??????
 
         setChanged();
         notifyObservers(MadnessEvents.MADNESS_INCREASE);
@@ -61,14 +57,14 @@ public class Madness extends Observable {
         if (NumberUtils.doubleEqual(percentage, 0.0f)) return false;
 
         // Check max value
-        if (NumberUtils.doubleEqual(level, MAX_MADNESS)) return false;
+        if (NumberUtils.doubleEqual(level, madnessConfig.MAX_MADNESS)) return false;
 
-        double range = MAX_MADNESS - MIN_MADNESS;
+        double range = madnessConfig.MAX_MADNESS - madnessConfig.MIN_MADNESS;
         double amount = range * percentage;
         level = level + amount;
 
-        if (level > MAX_MADNESS) level = MAX_MADNESS;
-        if (level < MIN_MADNESS) level = MIN_MADNESS; // ??????
+        if (level > madnessConfig.MAX_MADNESS) level = madnessConfig.MAX_MADNESS;
+        if (level < madnessConfig.MIN_MADNESS) level = madnessConfig.MIN_MADNESS; // ??????
 
         setChanged();
         notifyObservers(MadnessEvents.MADNESS_INCREASE);
@@ -85,9 +81,9 @@ public class Madness extends Observable {
         if (percentage < 0.0f || percentage > 1.0d) return false;
 
         // Check max value
-        if (NumberUtils.doubleEqual(level, MAX_MADNESS)) return false;
+        if (NumberUtils.doubleEqual(level, madnessConfig.MAX_MADNESS)) return false;
 
-        double range = MAX_MADNESS - MIN_MADNESS;
+        double range = madnessConfig.MAX_MADNESS - madnessConfig.MIN_MADNESS;
         double newLevel = range * percentage;
         // Check if necessary
         if (NumberUtils.doubleEqual(level, newLevel)) return false;
@@ -97,8 +93,8 @@ public class Madness extends Observable {
 
         level = newLevel;
 
-        if (level > MAX_MADNESS) level = MAX_MADNESS;
-        if (level < MIN_MADNESS) level = MIN_MADNESS; // ??????
+        if (level > madnessConfig.MAX_MADNESS) level = madnessConfig.MAX_MADNESS;
+        if (level < madnessConfig.MIN_MADNESS) level = madnessConfig.MIN_MADNESS; // ??????
 
         setChanged();
         if (oldLevel > newLevel) notifyObservers(MadnessEvents.MADNESS_DECREASE);
@@ -116,15 +112,15 @@ public class Madness extends Observable {
         if (amount < 0.0D) return false;
 
         // Check correct value
-        if (amount > MAX_MADNESS || amount < MIN_MADNESS) return false;
+        if (amount > madnessConfig.MAX_MADNESS || amount < madnessConfig.MIN_MADNESS) return false;
 
         // Previous amount
         double oldAmount = level;
 
         level = amount;
 
-        if (level > MAX_MADNESS) level = MAX_MADNESS;
-        if (level < MIN_MADNESS) level = MIN_MADNESS; // ??????
+        if (level > madnessConfig.MAX_MADNESS) level = madnessConfig.MAX_MADNESS;
+        if (level < madnessConfig.MIN_MADNESS) level = madnessConfig.MIN_MADNESS; // ??????
 
         setChanged();
         if (oldAmount > amount) notifyObservers(MadnessEvents.MADNESS_DECREASE);
@@ -136,8 +132,8 @@ public class Madness extends Observable {
      * Sets the madness level to the maximum value, according to the configuration file.
      */
     public void setMax() {
-        if (!NumberUtils.doubleEqual(level, MAX_MADNESS)) setChanged();
-        level = MAX_MADNESS;
+        if (!NumberUtils.doubleEqual(level, madnessConfig.MAX_MADNESS)) setChanged();
+        level = madnessConfig.MAX_MADNESS;
         notifyObservers(MadnessEvents.MADNESS_INCREASE);
     }
 
@@ -145,8 +141,8 @@ public class Madness extends Observable {
      * Sets the madness level to the minimum value, according to the configuration file. Can decrease madness levels.
      */
     public void setMin() {
-        if (!NumberUtils.doubleEqual(level, MIN_MADNESS)) setChanged();
-        level = MIN_MADNESS;
+        if (!NumberUtils.doubleEqual(level, madnessConfig.MIN_MADNESS)) setChanged();
+        level = madnessConfig.MIN_MADNESS;
         notifyObservers(MadnessEvents.MADNESS_DECREASE);
     }
 }
