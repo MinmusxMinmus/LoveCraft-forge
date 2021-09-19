@@ -68,4 +68,38 @@ public class LoveCraft
             Proxies.models.register(Item.getItemFromBlock((Block) block), 0);
         });
     }
+
+    @Config(modid = MOD_ID, name = "LoveCraft")
+    public static class Configuration {
+
+        public static class MadnessConfig {
+
+            @Config.Name("Maximum Madness value")
+            @Config.Comment({
+                    "This determines the maximum Madness value that can be reached by a player.",
+                    "It's worth mentioning that this value has to be higher than the \"Minimum Madness value\" config",
+                    "Madness events are triggered by this value, so changing it may affect what events can or cannot happen.",
+                    "It is recommended to leave this untouched, unless you're playing with an addon that adds events past the default level."
+            })
+            @Config.RangeDouble(min = 0.0D)
+            public static double MAX_MADNESS = 100.0D;
+
+            @Config.Name("Minimum Madness value")
+            @Config.Comment({
+                    "This determines the minimum Madness value that can be reached by a player.",
+                    "It's worth mentioning that this value has to be lower than the \"Maximum Madness value\" config",
+                    "This value coincides with the madness level a player gets when joining a new world.",
+                    "It is recommended to leave this untouched, unless you're playing with an addon that adds events before the default level.",
+                    "Note: having this value above any madness event's level means that said event can and will be triggered as if the player had reached the Madness level means."
+            })
+            @Config.RangeDouble(min = 0.0D)
+            public static double MIN_MADNESS = 0.0D;
+        }
+
+        @Config.Name("Madness configuration")
+        @Config.Comment({
+                "This section refers to values related to the Madness functionality."
+        })
+        public static MadnessConfig madnessConfig = new MadnessConfig();
+    }
 }
