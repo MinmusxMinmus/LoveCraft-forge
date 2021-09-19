@@ -8,7 +8,7 @@ import java.util.Observable;
 import static com.minmusxminmus.lovecraft.LoveCraft.Configuration.MadnessConfig.MAX_MADNESS;
 import static com.minmusxminmus.lovecraft.LoveCraft.Configuration.MadnessConfig.MIN_MADNESS;
 
-public class Madness extends Observable{
+public class Madness extends Observable {
 
     private double level;
 
