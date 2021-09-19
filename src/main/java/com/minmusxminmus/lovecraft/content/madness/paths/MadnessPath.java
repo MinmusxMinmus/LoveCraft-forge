@@ -21,7 +21,7 @@ public abstract class MadnessPath extends IForgeRegistryEntry.Impl<MadnessPath> 
     }
 
     public static Collection<MadnessPath> getAllPaths() {
-        if (MADNESS_REGISTRY == null) return null;
+        if (MADNESS_REGISTRY == null) return getDefaultPaths();
         return MADNESS_REGISTRY.getValuesCollection();
     }
 
