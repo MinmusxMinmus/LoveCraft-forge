@@ -1,0 +1,28 @@
+{
+    "display": {
+        "icon": {
+            "item": "lovecraft:old_book"
+        },
+        "title": {
+            "translate": "advancement.lovecraft.path.dream.root"
+        },
+        "description": {
+            "translate": "advancement.lovecraft.path.dream.root.desc"
+        },
+        "frame": "task",
+        "background": "lovecraft:textures/items/old_book.png",
+        "show_toast": true
+    },
+    "criteria": {
+        "read_old_book": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "lovecraft:old_book"
+                    }
+                ]
+            }
+        }
+    }
+}

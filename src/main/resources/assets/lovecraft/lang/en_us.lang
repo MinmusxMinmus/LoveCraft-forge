@@ -9,3 +9,11 @@ item.lovecraft.old_book.name=Old Book
 # Commands
 
 command.lovecraft.lovecraft.usage=/LoveCraft <nothing>
+
+# Advancements
+
+advancement.lovecraft.main.root=LoveCraft
+advancement.lovecraft.main.root.desc=Today was such a good day...
+
+advancement.lovecraft.path.dream.root=LoveCraft: Dream Path
+advancement.lovecraft.path.dream.root.desc=Locked in?
