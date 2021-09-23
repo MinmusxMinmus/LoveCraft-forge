@@ -1,5 +1,6 @@
 package com.minmusxminmus.lovecraft.content.madness.paths;
 
+import com.minmusxminmus.lovecraft.LoveCraft;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
@@ -28,7 +29,10 @@ public abstract class MadnessPath extends IForgeRegistryEntry.Impl<MadnessPath> 
      * Returns all available madness paths. If no madness path registry is found, it will instead return the default paths.
      */
     public static Collection<MadnessPath> getAllPaths() {
-        if (MADNESS_REGISTRY == null) return getDefaultPaths();
+        if (MADNESS_REGISTRY == null) {
+            LoveCraft.LOGGER.warn("Unable to find Madness path registry. No alternative paths will be available.");
+            return getDefaultPaths();
+        }
         return MADNESS_REGISTRY.getValuesCollection();
     }
 
