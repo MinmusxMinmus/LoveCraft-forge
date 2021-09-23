@@ -8,4 +8,4 @@ item.lovecraft.old_book.name=Old Book
 
 # Commands
 
-commands.lovecraft.lovecraft.usage=/LoveCraft <nothing>
+command.lovecraft.lovecraft.usage=/LoveCraft <nothing>

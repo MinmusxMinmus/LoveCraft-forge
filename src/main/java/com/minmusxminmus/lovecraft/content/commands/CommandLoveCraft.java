@@ -13,7 +13,7 @@ public class CommandLoveCraft extends CommandBase {
 
     @Override
     public String getUsage(ICommandSender sender) {
-        return "commands.lovecraft.lovecraft.usage";
+        return "command.lovecraft.lovecraft.usage";
     }
 
     @Override
