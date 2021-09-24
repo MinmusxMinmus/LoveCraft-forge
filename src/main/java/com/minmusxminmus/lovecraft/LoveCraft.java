@@ -133,7 +133,15 @@ public class LoveCraft
             })
             @Config.RangeDouble(min = 0.0D)
             public double MIN_MADNESS = 0.0D;
+        }
 
+        @Config.Name("Madness configuration")
+        @Config.Comment({
+                "This section refers to values related to the Madness functionality."
+        })
+        public static MadnessConfig madnessConfig = new MadnessConfig();
+
+        public static class PathConfig {
             @Config.Name("Deep path enabled")
             @Config.Comment({
                     "This determines whether or not the Deep path is enabled.",
@@ -162,11 +170,11 @@ public class LoveCraft
             })
             public boolean KNOWLEDGE_PATH_ENABLED = true;
         }
-
-        @Config.Name("Madness configuration")
+        @Config.Name("Madness path configuration")
         @Config.Comment({
-                "This section refers to values related to the Madness functionality."
+                "This section addresses the configuration related to the madness paths available through the base mod.",
+                "Paths added via addons will not have their configuration here - check the addon's config file or mod page for specific information."
         })
-        public static MadnessConfig madnessConfig = new MadnessConfig();
+        public static PathConfig pathConfig = new PathConfig();
     }
 }
