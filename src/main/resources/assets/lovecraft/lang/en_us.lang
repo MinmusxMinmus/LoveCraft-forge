@@ -8,7 +8,7 @@ item.lovecraft.old_book.name=Old Book
 
 # Commands
 
-command.lovecraft.lovecraft.usage=/LoveCraft <nothing>
+command.lovecraft.lovecraft.usage=/LoveCraft (or /lovecraft) <nothing>
 
 # Advancements
 
