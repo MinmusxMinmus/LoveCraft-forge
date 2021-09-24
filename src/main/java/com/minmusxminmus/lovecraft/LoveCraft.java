@@ -1,16 +1,23 @@
 package com.minmusxminmus.lovecraft;
 
+import com.minmusxminmus.lovecraft.content.capabilities.MadnessProvider;
 import com.minmusxminmus.lovecraft.content.collections.Blocks;
 import com.minmusxminmus.lovecraft.content.collections.Items;
 import com.minmusxminmus.lovecraft.content.commands.CommandLoveCraft;
+import com.minmusxminmus.lovecraft.content.madness.IMadness;
+import com.minmusxminmus.lovecraft.content.madness.PlayerMadness;
 import com.minmusxminmus.lovecraft.content.madness.paths.*;
 import com.minmusxminmus.lovecraft.proxy.Proxies;
 import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.config.Config;
+import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -40,6 +47,9 @@ public class LoveCraft
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         LOGGER = event.getModLog();
+
+        LOGGER.info("Registering capabilities");
+        Proxies.initialization.registerCapabilities();
     }
 
     @Mod.EventHandler
@@ -60,6 +70,32 @@ public class LoveCraft
         registryBuilder.setType(MadnessPath.class);
         registryBuilder.setName(new ResourceLocation(LoveCraft.MOD_ID, "madnesspaths"));
         registryBuilder.create();
+    }
+
+    @SubscribeEvent
+    public static void attachMadnessCapability(AttachCapabilitiesEvent<Entity> event) {
+        if (event.getObject() instanceof EntityPlayer) {
+            LOGGER.info("Attaching madness capability to player");
+            event.addCapability(new ResourceLocation(MOD_ID, "capabilityMadness"), new MadnessProvider(new PlayerMadness()));
+        }
+    }
+
+    @SubscribeEvent
+    public static void refreshMadnessAfterDeath(PlayerEvent.Clone event) {
+        if (event.isWasDeath()) {
+            LOGGER.info("Persisting madness values from recently dead player '" + event.getOriginal().getDisplayNameString() + "'" );
+            if (!event.getOriginal().hasCapability(IMadness.MADNESS_CAPABILITY, null)) {
+                LOGGER.warn("Old player '" + event.getOriginal().getDisplayNameString() + "' had no madness capability. Ignoring");
+                return;
+            }
+            double madnessValue = event.getOriginal().getCapability(IMadness.MADNESS_CAPABILITY, null).getLevel();
+            if (!event.getEntityPlayer().hasCapability(IMadness.MADNESS_CAPABILITY, null)) {
+                LOGGER.warn("New player '" + event.getEntityPlayer().getDisplayNameString() + "' has no madness capability. Ignoring");
+                return;
+            }
+            event.getEntityPlayer().getCapability(IMadness.MADNESS_CAPABILITY, null).setLevel(madnessValue);
+            event.getEntityPlayer().getCapability(IMadness.MADNESS_CAPABILITY, null).refresh();
+        }
     }
 
     @SubscribeEvent

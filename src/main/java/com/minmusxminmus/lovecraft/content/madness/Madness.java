@@ -7,7 +7,7 @@ import java.util.Observable;
 
 import static com.minmusxminmus.lovecraft.LoveCraft.Configuration.madnessConfig;
 
-public class Madness extends Observable {
+public class Madness extends Observable implements IMadness {
 
     private double level;
 
@@ -19,15 +19,12 @@ public class Madness extends Observable {
         this(madnessConfig.MIN_MADNESS);
     }
 
-    protected double getLevel() {
+    @Override
+    public double getLevel() {
         return level;
     }
 
-    /**
-     * Increases the Madness level by a fixed value. Will not increase past the maximum value set in the config.
-     * @param amount A value to add to the
-     * @return {@code true} if the Madness level has changed.
-     */
+    @Override
     public boolean increase(double amount) {
         // Check correct parameter
         if (amount < 0.0D) return false;
@@ -44,11 +41,7 @@ public class Madness extends Observable {
         return true;
     }
 
-    /**
-     * Increases the Madness level by a percentage.
-     * @param percentage Value between 0 and 1.
-     * @return {@code true} if the Madness level has changed.
-     */
+    @Override
     public boolean increase(float percentage) {
         // Check correct parameter
         if (percentage < 0.0f || percentage > 1.0d) return false;
@@ -71,11 +64,7 @@ public class Madness extends Observable {
         return true;
     }
 
-    /**
-     * Sets the Madness level to a certain percentage. Can decrease madness levels.
-     * @param percentage Value between 0 and 1.
-     * @return {@code true} if the Madness level changes.
-     */
+    @Override
     public boolean setLevel(float percentage) {
         // Check correct parameter
         if (percentage < 0.0f || percentage > 1.0d) return false;
@@ -102,11 +91,7 @@ public class Madness extends Observable {
         return true;
     }
 
-    /**
-     * Sets the Madness level to a certain value. Can decrease madness level.
-     * @param amount The new madness value.
-     * @return {@code true} if the Madness level changes.
-     */
+    @Override
     public boolean setLevel(double amount) {
         // Check correct parameter
         if (amount < 0.0D) return false;
@@ -128,21 +113,26 @@ public class Madness extends Observable {
         return true;
     }
 
-    /**
-     * Sets the madness level to the maximum value, according to the configuration file.
-     */
-    public void setMax() {
+    @Override
+    public boolean setMax() {
         if (!NumberUtils.doubleEqual(level, madnessConfig.MAX_MADNESS)) setChanged();
         level = madnessConfig.MAX_MADNESS;
         notifyObservers(MadnessEvents.MADNESS_INCREASE);
+        return hasChanged();
     }
 
-    /**
-     * Sets the madness level to the minimum value, according to the configuration file. Can decrease madness levels.
-     */
-    public void setMin() {
+    @Override
+    public boolean setMin() {
         if (!NumberUtils.doubleEqual(level, madnessConfig.MIN_MADNESS)) setChanged();
         level = madnessConfig.MIN_MADNESS;
         notifyObservers(MadnessEvents.MADNESS_DECREASE);
+        return hasChanged();
     }
+
+    @Override
+    public boolean refresh() {
+        return false;
+    }
+
+
 }
