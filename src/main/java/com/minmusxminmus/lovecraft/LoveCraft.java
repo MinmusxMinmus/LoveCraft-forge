@@ -57,6 +57,8 @@ public class LoveCraft
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
+        LOGGER.info("Registering custom GUI handler");
+        NetworkRegistry.INSTANCE.registerGuiHandler(LoveCraft.INSTANCE, new LoveCraftGuiHandler());
         LOGGER.info("Caching Madness path registry");
         MadnessPath.MADNESS_REGISTRY = GameRegistry.findRegistry(MadnessPath.class);
     }
@@ -85,6 +87,7 @@ public class LoveCraft
 
     @SubscribeEvent
     public static void refreshMadnessAfterDeath(PlayerEvent.Clone event) {
+        assert IMadness.MADNESS_CAPABILITY != null;
         if (event.isWasDeath()) {
             LOGGER.info("Persisting madness values from recently dead player '" + event.getOriginal().getDisplayNameString() + "'" );
             if (!event.getOriginal().hasCapability(IMadness.MADNESS_CAPABILITY, null)) {
