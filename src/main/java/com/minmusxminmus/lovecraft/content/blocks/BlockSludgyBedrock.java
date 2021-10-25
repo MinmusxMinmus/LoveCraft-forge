@@ -22,7 +22,7 @@ public class BlockSludgyBedrock extends Block implements BlockItem {
     public BlockSludgyBedrock() {
         super(Material.GROUND, MapColor.BLACK);
         setUnlocalizedName(StringFormatter.unlocalize(NAME));
-        setRegistryName(StringFormatter.registryName(NAME));
+        setRegistryName(StringFormatter.asResourceLocation(NAME));
         setCreativeTab(CreativeTabs.TRANSPORTATION);
     }
 

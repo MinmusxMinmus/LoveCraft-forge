@@ -4,10 +4,12 @@ import com.minmusxminmus.lovecraft.content.capabilities.MadnessProvider;
 import com.minmusxminmus.lovecraft.content.collections.Blocks;
 import com.minmusxminmus.lovecraft.content.collections.Items;
 import com.minmusxminmus.lovecraft.content.commands.CommandLoveCraft;
+import com.minmusxminmus.lovecraft.content.gui.LoveCraftGuiHandler;
 import com.minmusxminmus.lovecraft.content.madness.IMadness;
 import com.minmusxminmus.lovecraft.content.madness.PlayerMadness;
 import com.minmusxminmus.lovecraft.content.madness.paths.*;
 import com.minmusxminmus.lovecraft.proxy.Proxies;
+import com.minmusxminmus.lovecraft.util.StringFormatter;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,6 +25,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.RegistryBuilder;
 import org.apache.logging.log4j.Logger;
@@ -68,7 +71,7 @@ public class LoveCraft
     public static void registerRegistries(RegistryEvent.NewRegistry event) {
         RegistryBuilder<MadnessPath> registryBuilder = new RegistryBuilder<>();
         registryBuilder.setType(MadnessPath.class);
-        registryBuilder.setName(new ResourceLocation(LoveCraft.MOD_ID, "madnesspaths"));
+        registryBuilder.setName(StringFormatter.asResourceLocation("madnessRegistry"));
         registryBuilder.create();
     }
 
@@ -76,7 +79,7 @@ public class LoveCraft
     public static void attachMadnessCapability(AttachCapabilitiesEvent<Entity> event) {
         if (event.getObject() instanceof EntityPlayer) {
             LOGGER.info("Attaching madness capability to player");
-            event.addCapability(new ResourceLocation(MOD_ID, "capabilityMadness"), new MadnessProvider(new PlayerMadness()));
+            event.addCapability(StringFormatter.asResourceLocation("madnessCapability"), new MadnessProvider(new PlayerMadness()));
         }
     }
 
