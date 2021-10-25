@@ -4,6 +4,7 @@ import com.minmusxminmus.lovecraft.content.capabilities.MadnessProvider;
 import com.minmusxminmus.lovecraft.content.collections.Blocks;
 import com.minmusxminmus.lovecraft.content.collections.Items;
 import com.minmusxminmus.lovecraft.content.commands.CommandLoveCraft;
+import com.minmusxminmus.lovecraft.content.commands.CommandMadness;
 import com.minmusxminmus.lovecraft.content.gui.LoveCraftGuiHandler;
 import com.minmusxminmus.lovecraft.content.madness.IMadness;
 import com.minmusxminmus.lovecraft.content.madness.PlayerMadness;
@@ -65,8 +66,9 @@ public class LoveCraft
 
     @Mod.EventHandler
     public void registerCommands(FMLServerStartingEvent event) {
-        LOGGER.info("Registering LoveCraft command");
+        LOGGER.info("Registering LoveCraft commands");
         event.registerServerCommand(new CommandLoveCraft());
+        event.registerServerCommand(new CommandMadness());
     }
 
     @SubscribeEvent

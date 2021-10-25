@@ -8,7 +8,27 @@ item.lovecraft.old_book.name=Old Book
 
 # Commands
 
-command.lovecraft.lovecraft.usage=/LoveCraft (or /lovecraft) <nothing>
+command.lovecraft.madness.usage=Usage: /Madness <increase | reset | level | help>
+command.lovecraft.madness.increase.usage=Usage: /Madness increase <value>
+command.lovecraft.madness.reset.usage=Usage: /Madness reset
+command.lovecraft.madness.level.usage=Usage: /Madness level
+
+command.lovecraft.madness.help1=The /Madness command is used to interact with your Madness level.
+command.lovecraft.madness.help2=The command allows you to modify the Madness values at will.
+command.lovecraft.madness.increase.help1=This command is used to increase the Madness level.
+command.lovecraft.madness.increase.help2=The expected value is a dot-using decimal like 12.3456 (anything that Java can parse as a double).
+command.lovecraft.madness.increase.help3=The maximum possible value is located in the configuration file. Increasing past the maximum won't do anything.
+command.lovecraft.madness.reset.help1=This command resets your current Madness level back to the minimum value (read from the configuration file).
+command.lovecraft.madness.reset.help2=No parameters are expected, and will be ignored.
+command.lovecraft.madness.level.help=This command shows the current numerical value representing the player's Madness level.
+
+command.lovecraft.madness.specificHelp=For option-specific help, use /Madness <option> help
+command.lovecraft.madness.increase.increased1=Madness increased by %f
+command.lovecraft.madness.increase.increased2=Madness level is now %f
+command.lovecraft.madness.reset.reset=Madness level reset to %f
+command.lovecraft.madness.level.level=Madness level: %f
+
+
 
 # Advancements
 
