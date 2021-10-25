@@ -14,11 +14,13 @@ import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 
 public class ItemOldBook extends LoveCraftItem {
 
+    public static final String NAME = "old_book";
+
     @ObjectHolder("lovecraft:old_book")
     public static final Item INSTANCE = null;
 
     public ItemOldBook() {
-        super("old_book", CreativeTabs.TRANSPORTATION);
+        super(NAME, CreativeTabs.TRANSPORTATION);
     }
 
     @Override
