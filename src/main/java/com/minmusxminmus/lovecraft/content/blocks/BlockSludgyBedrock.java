@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 
 public class BlockSludgyBedrock extends Block implements BlockItem {
 
-    public static final String name = "sludgy_bedrock";
+    private static final String name = "sludgy_bedrock";
 
     @ObjectHolder("lovecraft:sludgy_bedrock")
     public static final Block INSTANCE_BLOCK = null;
@@ -22,7 +22,7 @@ public class BlockSludgyBedrock extends Block implements BlockItem {
     public BlockSludgyBedrock() {
         super(Material.GROUND, MapColor.BLACK);
         setUnlocalizedName(StringFormatter.unlocalize(name));
-        setRegistryName(StringFormatter.asResourceLocation(name));
+        setRegistryName(StringFormatter.registryName(name));
         setCreativeTab(CreativeTabs.TRANSPORTATION);
     }
 

@@ -13,7 +13,7 @@ public abstract class LoveCraftItem extends Item {
         this.name = name;
         setCreativeTab(creativeTab);
         setUnlocalizedName(StringFormatter.unlocalize(name));
-        setRegistryName(StringFormatter.asResourceLocation(name));
+        setRegistryName(StringFormatter.registryName(name));
     }
 
     public String getName() {

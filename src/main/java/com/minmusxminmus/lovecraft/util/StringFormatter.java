@@ -1,7 +1,5 @@
 package com.minmusxminmus.lovecraft.util;
 
-import net.minecraft.util.ResourceLocation;
-
 import static com.minmusxminmus.lovecraft.LoveCraft.MOD_ID;
 
 public class StringFormatter {
@@ -9,7 +7,7 @@ public class StringFormatter {
         return MOD_ID + "." + itemName;
     }
 
-    public static ResourceLocation asResourceLocation(String name) {
-        return new ResourceLocation(MOD_ID, name);
+    public static String registryName(String itemName) {
+        return MOD_ID + ":" + itemName;
     }
 }
