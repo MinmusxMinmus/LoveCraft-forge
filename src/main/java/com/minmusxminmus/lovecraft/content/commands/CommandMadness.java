@@ -79,6 +79,7 @@ public class CommandMadness extends CommandBase {
                     sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.reset.usage"));
                     sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.reset.help1"));
                     sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.reset.help2"));
+                    break;
                 }
                 madness.setMin();
                 madness.refresh();
@@ -89,6 +90,7 @@ public class CommandMadness extends CommandBase {
                     sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.reset.usage"));
                     sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.reset.help1"));
                     sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.reset.help2"));
+                    break;
                 }
                 sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.level.level", madness.getLevel()));
                 break;
