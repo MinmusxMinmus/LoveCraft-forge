@@ -10,8 +10,23 @@ import net.minecraft.util.text.TextComponentTranslation;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.StringJoiner;
 
 public class CommandMadness extends CommandBase {
+
+    private static final String HELP = "help";
+
+    private static final String OPTION_INCREASE = "increase";
+    private static final String OPTION_RESET = "reset";
+    private static final String OPTION_LEVEL = "level";
+
+    private static final String ALL_OPTIONS = new StringJoiner(" | ")
+            .add(HELP)
+            .add(OPTION_INCREASE)
+            .add(OPTION_RESET)
+            .add(OPTION_LEVEL)
+            .toString();
+
     @Override
     public String getName() {
         return "Madness";
@@ -45,19 +60,19 @@ public class CommandMadness extends CommandBase {
         }
 
         if (args.length == 0) {
-            sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.usage"));
+            sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.usage", ALL_OPTIONS));
             sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.specificHelp"));
             return;
         }
 
         switch (args[0]) {
-            case "increase":
+            case OPTION_INCREASE:
                 if (args.length != 2) {
-                    sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.increase.usage"));
+                    sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.generic.usage", OPTION_INCREASE, ""));
                     break;
                 }
-                if (args[1].equals("help")) {
-                    sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.increase.usage"));
+                if (args[1].equals(HELP)) {
+                    sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.generic.usage", OPTION_INCREASE, "<value>"));
                     sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.increase.help1"));
                     sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.increase.help2"));
                     sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.increase.help3"));
@@ -70,13 +85,13 @@ public class CommandMadness extends CommandBase {
                     sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.increase.increased1", val));
                     sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.increase.increased2", madness.getLevel()));
                 } catch (Exception e) {
-                    sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.increase.usage"));
+                    sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.generic.usage", OPTION_INCREASE, "<value>"));
                     sender.sendMessage(new TextComponentString("Exception: " + e));
                 }
                 break;
-            case "reset":
-                if (args.length > 2 && args[1].equals("help")) {
-                    sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.reset.usage"));
+            case OPTION_RESET:
+                if (args.length >= 2 && args[1].equals(HELP)) {
+                    sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.generic.usage", OPTION_RESET, ""));
                     sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.reset.help1"));
                     sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.reset.help2"));
                     break;
@@ -85,23 +100,23 @@ public class CommandMadness extends CommandBase {
                 madness.refresh();
                 sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.reset.reset", madness.getLevel()));
                 break;
-            case "level":
-                if (args.length > 2 && args[1].equals("help")) {
-                    sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.reset.usage"));
+            case OPTION_LEVEL:
+                if (args.length >= 2 && args[1].equals(HELP)) {
+                    sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.generic.usage", OPTION_LEVEL, ""));
                     sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.reset.help1"));
                     sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.reset.help2"));
                     break;
                 }
                 sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.level.level", madness.getLevel()));
                 break;
-            case "help":
-                sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.usage"));
+            case HELP:
+                sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.usage", ALL_OPTIONS));
                 sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.help1"));
                 sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.help2"));
                 sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.specificHelp"));
                 break;
             default:
-                sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.usage"));
+                sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.usage", ALL_OPTIONS));
                 sender.sendMessage(new TextComponentTranslation("command.lovecraft.madness.specificHelp"));
         }
     }

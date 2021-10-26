@@ -8,10 +8,8 @@ item.lovecraft.old_book.name=Old Book
 
 # Commands
 
-command.lovecraft.madness.usage=Usage: /Madness <increase | reset | level | help>
-command.lovecraft.madness.increase.usage=Usage: /Madness increase <value>
-command.lovecraft.madness.reset.usage=Usage: /Madness reset
-command.lovecraft.madness.level.usage=Usage: /Madness level
+command.lovecraft.madness.usage=Usage: /Madness <%s>
+command.lovecraft.madness.generic.usage=Usage: /Madness %s %s
 
 command.lovecraft.madness.help1=The /Madness command is used to interact with your Madness level.
 command.lovecraft.madness.help2=The command allows you to modify the Madness values at will.
