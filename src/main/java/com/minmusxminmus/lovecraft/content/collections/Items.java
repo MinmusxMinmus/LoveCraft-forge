@@ -14,6 +14,7 @@ public enum Items {
 
     static {
         items.add(new ItemOldBook());
+        //HERE new items (no itetmblocks, use the BlockItem interface)
     }
 
     public List<Item> getAll() {

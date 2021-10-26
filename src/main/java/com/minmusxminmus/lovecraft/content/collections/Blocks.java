@@ -16,6 +16,7 @@ public enum Blocks {
 
     static {
         blocks.add(new BlockSludgyBedrock());
+        //HERE new blocks
     }
 
     public List<Block> getAll() {
